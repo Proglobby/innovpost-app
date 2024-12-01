@@ -95,7 +95,7 @@ class FireBaseHelper {
             val ticketsRef = database.getReference("users/00503023/tickets")
             ticketsRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val id = snapshot.childrenCount.toInt()
+                    val id = snapshot.childrenCount.toInt() +1
                     val ticketRef = ticketsRef.child(id.toString())
                     val total = intArrayOf(0)
                     val agenceRef = database.getReference("agencies/$zip")

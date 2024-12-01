@@ -19,5 +19,13 @@ class DashboardActivity : AppCompatActivity() {
         }
         val notification = Notification("Notification Title", "This is the notification content.", "2021-09-01", this)
         //notification.showNotification()
+
+
+
+
+        val scannerCard = findViewById<CardView>(R.id.ScannerCard)
+        scannerCard.setOnClickListener {
+            startActivity(Intent(this, ScannerActivity::class.java))
+        }
     }
 }

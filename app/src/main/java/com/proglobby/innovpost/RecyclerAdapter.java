@@ -41,7 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Ticket
                 }else{
                     holder.description.setText(ticket.getRemaining(index[0])+ " to go");
                 }
-            }
+            }\
 
             @Override
             public void onCallback(List<Ticket> tickets) {

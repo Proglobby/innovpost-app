@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.zxing.integration.android.IntentIntegrator
 
 class ScannerActivity : AppCompatActivity() {
     private lateinit var btnScan: Button
@@ -42,14 +43,32 @@ class ScannerActivity : AppCompatActivity() {
             val qrCodeContents = intentResult.contents
 
             // Show the QR code contents in an AlertDialog
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Scanned QR Code")
-            builder.setMessage("QR Code Text: $qrCodeContents")
-            builder.setPositiveButton("OK") { dialog, _ ->
-                dialog.dismiss()
-                finish()
+
+            val message = qrCodeContents
+            val content = message.split(",")
+            val callback = object : FirebaseCallback {
+                override fun onIndexCallback(index: Int) {
+                    val builder = AlertDialog.Builder(this@ScannerActivity)
+                    builder.setTitle("Scanned QR Code")
+                    if (content[1].trim().toInt() - index < 0){
+                        builder.setMessage("Your ticket is expired")
+                    }else{
+                        builder.setMessage((content[1].trim().toInt() - index).toString() + " turns left")
+                    }
+
+                    builder.setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
+                        finish()
+                    }
+                    builder.show()
+                }
+
+                override fun onCallback(tickets: MutableList<Ticket>?) {
+                }
+
             }
-            builder.show()
+            //parse string to int
+            FireBaseHelper.readTicketIndex(content[0].toInt(), callback)
         } else {
             // If no result was found or there was an error
             Toast.makeText(applicationContext, "Error while reading QR Code", Toast.LENGTH_LONG).show()
