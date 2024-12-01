@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "618291713684",
+    "firebase_url": "https://innovpsost-default-rtdb.firebaseio.com",
+    "project_id": "innovpsost",
+    "storage_bucket": "innovpsost.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618291713684:android:1b2a53c7cb8dc9fc5e8681",
+        "android_client_info": {
+          "package_name": "com.proglobby.innovpost"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOOA-ELW72e60FinjYNs4dif0vs0jCx4k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
