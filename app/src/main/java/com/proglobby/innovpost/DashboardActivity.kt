@@ -3,6 +3,7 @@ package com.proglobby.innovpost
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
 
 class DashboardActivity : AppCompatActivity() {
@@ -20,7 +21,15 @@ class DashboardActivity : AppCompatActivity() {
         val notification = Notification("Notification Title", "This is the notification content.", "2021-09-01", this)
         //notification.showNotification()
 
-
+        val builder = AlertDialog.Builder(this)
+        builder.setView(R.layout.feedback)
+        builder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.show()
 
 
         val scannerCard = findViewById<CardView>(R.id.ScannerCard)
